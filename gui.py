@@ -11,11 +11,14 @@ class StorageScan:
         self.create_widgets()
 
     def create_widgets(self):
-        label = ttk.Label(self.root, text="Storage Scanner")
-        label.pack(pady=20)
 
-        button = ttk.Button(self.root, text="Select Folder", command=self.select_folder)
-        button.pack(pady=10)
+        ttk.Label(self.root, text="Choose Directory to Search: ").grid(row=1, column=1)
+        ttk.Button(self.root, text="Select Folder", command=self.select_folder).grid(row=1, column=2)
+
+        ttk.Label(self.root, textvariable=self.folder_var).grid(row=1, column=3, sticky="E")
+
+        for child in self.root.winfo_children():
+            child.grid_configure(padx=5, pady=5)
 
     def select_folder(self):
         folder_path = path()
