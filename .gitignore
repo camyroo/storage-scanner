@@ -1,4 +1,5 @@
-echo "__pycache__/" > .gitignore
-echo "*.pyc" >> .gitignore
-
-
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
