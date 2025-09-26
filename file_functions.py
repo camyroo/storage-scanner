@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter import filedialog
 
@@ -12,3 +13,9 @@ def path():
         return folder_path
     else:
         return None
+    
+# def find_file(dir: str, filename: str):
+#     files = os.listdir(dir)
+#     if filename in files:
+#         return os.path.join(dir, filename)
+#     return None

@@ -1,5 +1,4 @@
-import os
-from select_dir import path
+from file_functions import path
 from gui import start_gui  
 
 def main():
