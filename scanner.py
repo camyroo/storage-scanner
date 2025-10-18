@@ -1,5 +1,5 @@
 import os
-from file_functions import get_files_in_directory, print_file_info
+from file_functions import get_files_in_directory, get_folders_in_directory, print_file_info
 
 
 class Scanner:
@@ -10,7 +10,10 @@ class Scanner:
     def scan(self):
         """Scans the directory and prints info for all files"""
         files = get_files_in_directory(self.start_path)
-        
+        folders = get_folders_in_directory(self.start_path)
+
+        print(f"\nFound {len(folders)} folders in {self.start_path}")
+        print(folders)
         print(f"\nFound {len(files)} files in {self.start_path}")
         print(files)
         

@@ -1,4 +1,4 @@
-from file_functions import path
+from file_functions import select_folder
 from gui import start_gui  
 
 def main():

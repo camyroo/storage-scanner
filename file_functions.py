@@ -11,9 +11,29 @@ def select_folder():
     root.destroy()
     return folder_path if folder_path else None
 
+def get_folders_in_directory(path):
+    """Returns a list of folders in the given path"""
+
+    try: 
+        entries = os.listdir(path)
+        folder = [entry for entry in entries if os.path.isdir(os.path.join(path, entry))]
+        return folder
+    except FileNotFoundError:
+        print(f"Error: Directory '{path}' not found.")
+        return []
+    except NotADirectoryError:
+        print(f"Error: '{path}' is not a directory.")
+        return []
+    except PermissionError:
+        print(f"Error: Permission denied to access '{path}'.")
+        return []
+    # for entry in os.listdir(path):
+    #     full_path = os.path.join(path, entry)
+    #     if os.path.isdir(full_path):
+    #         print(f"FOLDER {full_path}")
 
 def get_files_in_directory(path):
-    """Returns a list of files (not directories) in the given path"""
+    """Returns a list of files in the given path"""
     try: 
         entries = os.listdir(path)
         files = [entry for entry in entries if os.path.isfile(os.path.join(path, entry))]
