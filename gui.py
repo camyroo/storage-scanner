@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk 
-from file_functions import path
+from file_functions import select_folder
+from scanner import Scanner
 from Log import Logger 
+
 
 class GUI:
     def __init__(self, root):
@@ -10,10 +12,8 @@ class GUI:
         self.root.geometry("800x600")
         self.folder_var = StringVar(value="No folder selected")
         self.selected_folder = None
-        
-
-
         self.use_debug = BooleanVar(value=True)
+        
         self.create_widgets()
 
     def create_widgets(self):
@@ -69,9 +69,8 @@ class GUI:
 
         ttk.Button(container, text="Test log", command=self.test).grid(row=10, column=1)
 
-
     def select_folder(self):
-        folder_path = path()
+        folder_path = select_folder()
 
         if folder_path:
             self.folder_var.set(f"PATH: {folder_path}")
@@ -79,23 +78,20 @@ class GUI:
 
     def start_scan(self):
         if self.selected_folder:
-            from os_functions import os_functions
-            os_functions(self.selected_folder)
-
-            
-
             if self.use_debug.get():
                 print(f"Beginning Scan: {self.selected_folder}")
+            
+            Scanner(self.selected_folder)
 
     def test(self):
         Logger(self.use_debug.get())
-
 
 
 def start_gui(): 
     root = Tk()  
     app = GUI(root)
     root.mainloop()
+
 
 if __name__ == "__main__":
     start_gui()
